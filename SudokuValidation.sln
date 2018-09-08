@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuValidation", "SudokuV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SudokuValidation.Tests", "SudokuValidation.Tests\SudokuValidation.Tests.csproj", "{092CC52E-6AF0-44EF-9624-7C522D171288}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator", "Validator\Validator.csproj", "{8939FFAB-92B1-45D5-A7F6-D077A9D62553}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{092CC52E-6AF0-44EF-9624-7C522D171288}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{092CC52E-6AF0-44EF-9624-7C522D171288}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{092CC52E-6AF0-44EF-9624-7C522D171288}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8939FFAB-92B1-45D5-A7F6-D077A9D62553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8939FFAB-92B1-45D5-A7F6-D077A9D62553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8939FFAB-92B1-45D5-A7F6-D077A9D62553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8939FFAB-92B1-45D5-A7F6-D077A9D62553}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
