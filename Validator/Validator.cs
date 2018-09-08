@@ -8,11 +8,22 @@ namespace SudukoValidator
         private const int _gridSize = 9;
         private List<List<int>> grid;
 
+        /// <summary>
+        ///     Load data with an existing grid
+        /// </summary>
+        /// <param name="_grid"></param>
         public Validator( List<List<int>> _grid)
         {
             grid = _grid;
         }
 
+        /// <summary>
+        ///     Load data using a string..
+        ///     Validation exists in this method of the string
+        ///     Is 9 x 9
+        ///     Is all data numbers between 1 and 9
+        /// </summary>
+        /// <param name="input"></param>
         public Validator(string input)
         {
             grid = new List<List<int>>();
@@ -28,13 +39,14 @@ namespace SudukoValidator
                         foreach ( var col in cols )
                         {
                             int n;
-                            if( int.TryParse( col, out n ))
+                            if( int.TryParse( col, out n ) 
+                                && (n >= 1 && n <= _gridSize))
                             { 
                                 gridRow.Add( Convert.ToInt32( col ) );
                             }
                             else
                             {
-                                throw new FormatException("Not all values are numbers");
+                                throw new FormatException("Not all values are numbers between 1 and 9");
                             }
                         }
                     }
@@ -50,7 +62,16 @@ namespace SudukoValidator
                 throw new FormatException( "Must be exactly 9 rows" );
         }
 
-         /// <summary>
+        /// <summary>
+        ///     Add ability to get the grid.
+        ///     For today I realize you can update the list in a list.
+        /// </summary>
+        public List<List<int>> Grid
+        {
+            get { return grid; }
+        }
+
+        /// <summary>
         ///     Check validity of a row
         /// </summary>
         /// <param name="grid"></param>

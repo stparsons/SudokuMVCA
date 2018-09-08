@@ -14,7 +14,7 @@
         var colIndex = 0;
     }
     <table id="grid">
-        @foreach ( var row in Model.Grid )
+        @foreach ( var row in Model.ValidatorGrid.Grid )
         {
             colIndex = 0;
             if ( Model.ValidatorGrid.IsRowValid(rowIndex))
