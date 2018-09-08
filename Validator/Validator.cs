@@ -5,13 +5,20 @@ namespace SudukoValidator
 {
     public class Validator
     {
+        private List<List<int>> grid;
+
+        public Validator( List<List<int>> _grid)
+        {
+            grid = _grid;
+        }
+
         /// <summary>
         ///     Check validity of a row
         /// </summary>
         /// <param name="grid"></param>
         /// <param name="row"></param>
         /// <returns></returns>
-        public bool IsRowValid( List<List<int>> grid, int row )
+        public bool IsRowValid( int row )
         {
             int colCt = grid [ row ].Count;
             bool [] exists = new bool [ colCt ];
@@ -43,7 +50,7 @@ namespace SudukoValidator
         /// <param name="grid"></param>
         /// <param name="whichCol"></param>
         /// <returns></returns>
-        public bool IsColumnValid( List<List<int>> grid, int whichCol )
+        public bool IsColumnValid( int whichCol )
         {
             int rowCt = grid.Count;
             bool [] exists = new bool [ rowCt ];
@@ -73,7 +80,7 @@ namespace SudukoValidator
         /// <param name="baseCol"></param>
         /// <param name="smallSquareSize"></param>
         /// <returns></returns>
-        public bool IsBlockValid( List<List<int>> grid, int baseRow, int baseCol, int smallSquareSize )
+        public bool IsBlockValid( int baseRow, int baseCol, int smallSquareSize )
         {
             bool [] exists = new bool [ grid.Count ];
 
@@ -106,7 +113,7 @@ namespace SudukoValidator
         /// </summary>
         /// <param name="grid"></param>
         /// <returns></returns>
-        public bool IsGridSizeValid( List<List<int>> grid )
+        public bool IsGridSizeValid( )
         {
             int size = grid.Count;
             for ( int subArr = 0; subArr < size; subArr++ )
@@ -133,7 +140,7 @@ namespace SudukoValidator
         /// <param name="min"></param>
         /// <param name="max"></param>
         /// <returns></returns>
-        public bool CheckGridValues( List<List<int>> grid, int min, int max )
+        public bool CheckGridValues( int min, int max )
         {
             for ( int row = 0; row < grid.Count; ++row )
             {
