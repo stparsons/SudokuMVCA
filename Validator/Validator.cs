@@ -66,6 +66,10 @@ namespace SudukoValidator
                 {
                     exists [ index ] = true;
                 }
+                else
+                {
+                    return false;
+                }
             }
 
             return true;

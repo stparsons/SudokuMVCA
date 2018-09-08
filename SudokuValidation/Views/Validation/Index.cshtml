@@ -16,14 +16,24 @@
     <table id="grid">
         @foreach ( var row in Model.Grid )
         {
-            if(Model.ValidatorGrid.IsRowValid(rowIndex))
-            { 
+            colIndex = 0;
+            if ( Model.ValidatorGrid.IsRowValid(rowIndex))
+            {
                 <tr>
                     @foreach ( var col in row )
                     {
+                        if(Model.ValidatorGrid.IsColumnValid(colIndex))
+                        {   
                         <td>
                             <input id="cell-@Model.IndexIterator" type="text" value="@col" />
                         </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled />
+                            </td>
+                        }
                         Model.IndexIterator++;
                         colIndex++;
                     }
@@ -34,9 +44,18 @@
                 <tr>
                     @foreach ( var col in row )
                     {
-                        <td>
-                            <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled />
-                        </td>
+                        if ( Model.ValidatorGrid.IsColumnValid( colIndex ) )
+                        {
+                            <td>
+                                <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled/>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled />
+                            </td>
+                        }
                         Model.IndexIterator++;
                         colIndex++;
                     }

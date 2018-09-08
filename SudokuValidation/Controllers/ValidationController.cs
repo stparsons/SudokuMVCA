@@ -15,7 +15,7 @@ namespace SudokuValidation.Controllers
         {
             List<List<int>> gridData = new List<List<int>>() {
                 new List<int> {5,3,4, 6,7,8, 9,1,2},
-                new List<int> {6,7,2, 1,9,5, 3,4,8},
+                new List<int> {6,9,2, 1,9,5, 3,4,8},
                 new List<int> {1,9,8, 3,4,2, 5,6,7},
 
                 new List<int> {8,5,9, 7,6,1, 4,2,3},
