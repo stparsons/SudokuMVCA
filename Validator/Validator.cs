@@ -5,6 +5,7 @@ namespace SudukoValidator
 {
     public class Validator
     {
+        private const int _gridSize = 9;
         private List<List<int>> grid;
 
         public Validator( List<List<int>> _grid)
@@ -12,7 +13,44 @@ namespace SudukoValidator
             grid = _grid;
         }
 
-        /// <summary>
+        public Validator(string input)
+        {
+            grid = new List<List<int>>();
+            var rows = input.Trim().Split( "\n\r".ToCharArray(), StringSplitOptions.RemoveEmptyEntries );
+            if ( rows.Length == _gridSize )
+            {
+                foreach ( var row in rows )
+                {
+                    var cols = row.Trim().Split( ' ' );
+                    List<int> gridRow = new List<int>();
+                    if ( cols.Length == _gridSize )
+                    {
+                        foreach ( var col in cols )
+                        {
+                            int n;
+                            if( int.TryParse( col, out n ))
+                            { 
+                                gridRow.Add( Convert.ToInt32( col ) );
+                            }
+                            else
+                            {
+                                throw new FormatException("Not all values are numbers");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException( "Must be exactly 9 columns" );
+                    }
+
+                    grid.Add( gridRow );
+                }
+            }
+            else
+                throw new FormatException( "Must be exactly 9 rows" );
+        }
+
+         /// <summary>
         ///     Check validity of a row
         /// </summary>
         /// <param name="grid"></param>
@@ -167,7 +205,7 @@ namespace SudukoValidator
         /// <returns></returns>
         private bool isBetween1and9( int val )
         {
-            if ( val < 1 || val > 9 )
+            if ( val < 1 || val > _gridSize )
                 return false;
             else
                 return true;

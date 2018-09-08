@@ -87,6 +87,47 @@ namespace SudokuValidation.Tests
             Assert.IsFalse( validator.CheckGridValues( 1, 9 ) );
         }
 
+        [TestMethod]
+        public void TestValidatorStringConstructor()
+        {
+            string clientString = @"
+                5 3 4 6 7 8 9 1 2
+                6 7 2 1 9 5 3 4 8
+                1 9 8 3 4 2 5 6 7
+                8 5 9 7 6 1 4 2 3
+                4 2 6 8 5 3 7 9 1
+                7 1 3 9 2 4 8 5 6
+                9 6 1 5 3 7 2 8 4
+                2 8 7 4 1 9 6 3 5
+                3 4 5 2 8 6 1 7 9
+                ";
+
+            Validator validator = new Validator( clientString );
+ 
+            Assert.IsTrue( validator.IsGridSizeValid() );
+
+            Assert.IsTrue( validator.IsRowValid( 0 ) );
+            Assert.IsTrue( validator.IsRowValid( 1 ) );
+            Assert.IsTrue( validator.IsRowValid( 2 ) );
+            Assert.IsTrue( validator.IsRowValid( 3 ) );
+            Assert.IsTrue( validator.IsRowValid( 4 ) );
+            Assert.IsTrue( validator.IsRowValid( 5 ) );
+            Assert.IsTrue( validator.IsRowValid( 6 ) );
+            Assert.IsTrue( validator.IsRowValid( 7 ) );
+            Assert.IsTrue( validator.IsRowValid( 8 ) );
+
+            Assert.IsTrue( validator.IsColumnValid( 0 ) );
+            Assert.IsTrue( validator.IsColumnValid( 1 ) );
+            Assert.IsTrue( validator.IsColumnValid( 2 ) );
+            Assert.IsTrue( validator.IsColumnValid( 3 ) );
+            Assert.IsTrue( validator.IsColumnValid( 4 ) );
+            Assert.IsTrue( validator.IsColumnValid( 5 ) );
+            Assert.IsTrue( validator.IsColumnValid( 6 ) );
+            Assert.IsTrue( validator.IsColumnValid( 7 ) );
+            Assert.IsTrue( validator.IsColumnValid( 8 ) );
+
+        }
+
         //
         // Check that Grid is an appropriate size
         //
