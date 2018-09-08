@@ -5,7 +5,9 @@ using SudukoValidator;
 
 namespace SudokuValidation.Tests
 {
+    //
     // Test to verify Validator.
+    //
     [TestClass]
     public class ValidatorTests
     {
