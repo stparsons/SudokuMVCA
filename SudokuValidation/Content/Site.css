@@ -50,7 +50,7 @@ input {
 }
 
     input:disabled {
-        background-color: red;
+        background-color:beige;
     }
 
 #cell-0, #cell-1, #cell-2 {

@@ -25,13 +25,13 @@
                         if(Model.ValidatorGrid.IsColumnValid(colIndex))
                         {   
                         <td>
-                            <input id="cell-@Model.IndexIterator" type="text" value="@col" />
+                            <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled />
                         </td>
                         }
                         else
                         {
                             <td>
-                                <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled />
+                                <input id="cell-@Model.IndexIterator" type="text" value="@col" style="background-color: indianred" disabled />
                             </td>
                         }
                         Model.IndexIterator++;
@@ -47,13 +47,13 @@
                         if ( Model.ValidatorGrid.IsColumnValid( colIndex ) )
                         {
                             <td>
-                                <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled/>
+                                <input id="cell-@Model.IndexIterator" type="text" value="@col" style="background-color: indianred" disabled/>
                             </td>
                         }
                         else
                         {
                             <td>
-                                <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled />
+                                <input id="cell-@Model.IndexIterator" type="text" value="@col" style="background-color: indianred" disabled />
                             </td>
                         }
                         Model.IndexIterator++;
