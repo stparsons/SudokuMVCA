@@ -27,12 +27,12 @@ namespace SudokuValidation.Controllers
                 new List<int> {3,4,5, 2,8,6, 1,7,9}
             };
 
-            Validator validator = new Validator(gridData);
             SudokuGrid sudokuGrid = new SudokuGrid()
             {
                 IndexIterator = 0,
                 Grid =gridData,
-                ValidatorGrid = validator };
+                ValidatorGrid = new Validator( gridData )
+            };
             
             return View(sudokuGrid);
         }

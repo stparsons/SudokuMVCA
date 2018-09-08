@@ -9,18 +9,40 @@
     <h2>Input Numbers</h2>
     <input id="inNumbers" type="text">
     <h2>Validation Grid</h2>
+    @{ 
+        var rowIndex = 0;
+        var colIndex = 0;
+    }
     <table id="grid">
         @foreach ( var row in Model.Grid )
         {
-            <tr>
-                @foreach ( var col in row )
-                {
-                    <td>
-                        <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled/>
-                    </td>
-                    Model.IndexIterator++;
-                }
-            </tr>
+            if(Model.ValidatorGrid.IsRowValid(rowIndex))
+            { 
+                <tr>
+                    @foreach ( var col in row )
+                    {
+                        <td>
+                            <input id="cell-@Model.IndexIterator" type="text" value="@col" />
+                        </td>
+                        Model.IndexIterator++;
+                        colIndex++;
+                    }
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    @foreach ( var col in row )
+                    {
+                        <td>
+                            <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled />
+                        </td>
+                        Model.IndexIterator++;
+                        colIndex++;
+                    }
+                </tr>
+            }
+            rowIndex++;
         }
     </table>
 
