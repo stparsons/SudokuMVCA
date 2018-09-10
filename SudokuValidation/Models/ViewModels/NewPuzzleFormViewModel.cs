@@ -8,7 +8,11 @@ namespace SudokuValidation.Models.ViewModels
 {
     public class NewPuzzleFormViewModel
     {
-        [Display(Name = "New Puzzle Data")]
+        [Required]
+        [NewPuzzleCustomValidation]
+        [Display( Name = "New Puzzle Data" )]
         public string PuzzleData { get; set; }
+
+        public string Message { get; set; }
     }
 }

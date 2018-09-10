@@ -8,6 +8,7 @@ namespace SudokuValidation.Models
 {
     public class SudokuGrid
     {
+        public string Message { get; set; }
         public int IndexIterator { get; set; }
         public List<List<int>> Grid { get; set; }
         public Validator ValidatorGrid { get; set; }

@@ -72,6 +72,28 @@ namespace SudukoValidator
         }
 
         /// <summary>
+        ///     High level method that will check the entier grid
+        /// </summary>
+        /// <returns></returns>
+        public bool IsAllGridValid()
+        {
+            if( IsGridSizeValid()
+                && IsRowValid( 0 ) && IsRowValid( 1 ) && IsRowValid( 2 ) && IsRowValid( 3 )
+                && IsRowValid( 4 ) && IsRowValid( 5 ) && IsRowValid( 6 ) && IsRowValid( 7 ) && IsRowValid( 8 )
+                && IsColumnValid( 0 ) && IsColumnValid( 1 ) && IsColumnValid( 2 ) && IsColumnValid( 3 )
+                && IsColumnValid( 4 ) && IsColumnValid( 5 ) && IsColumnValid( 6 ) && IsColumnValid( 7 ) && IsColumnValid( 8 )
+                )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        /// <summary>
         ///     Check validity of a row
         /// </summary>
         /// <param name="grid"></param>

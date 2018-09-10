@@ -5,15 +5,17 @@
 }
 
 <h2>New Puzzle</h2>
+<p>Enter your numbers, single space delimited. </p>
+<p>Must be 9 rows and 9 columns exactly.</p>
 
 @using ( Html.BeginForm( "Validate", "Validation" ) )
 {
     <div class="form-group">
         @Html.LabelFor(n => n.PuzzleData)
-        @Html.TextAreaFor( n => n.PuzzleData, new { @class = "form-control bigbox" } )
+        @Html.TextAreaFor( n => n.PuzzleData, new { @class = "form-control" } )
+        @Html.ValidationMessageFor( n => n.PuzzleData)
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
 
 }
-
 

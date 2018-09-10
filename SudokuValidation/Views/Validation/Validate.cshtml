@@ -7,11 +7,21 @@
 <h2>Sudoku Validation</h2>
 <div class="container">
 
-    <h2>Validation Grid</h2>
     @{
         var rowIndex = 0;
         var colIndex = 0;
     }
+
+    @if(Model.ValidatorGrid.IsAllGridValid())
+    { 
+        <h2 style="color:green">The Puzzle is valid!</h2>
+    }
+    else
+    {
+        <h2 style="color:red">Sorry. The Puzzle is not valid!</h2>
+    }
+
+
     <table id="grid">
         @foreach ( var row in Model.ValidatorGrid.Grid )
         {

@@ -200,3 +200,17 @@ input {
 #cell-60, #cell-69, #cell-78 {
     border-left: 2px solid #000000;
 }
+
+.field-validation-error,
+textarea.error {
+    color: red;
+}
+
+.input-validation-error,
+textarea.error {
+    border: 2px solid red;
+}
+
+.validation-summary-errors {
+    color: red;
+}

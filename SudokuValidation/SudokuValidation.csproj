@@ -147,6 +147,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\NewPuzzleCustomValidation.cs" />
     <Compile Include="Models\SudokuGrid.cs" />
     <Compile Include="Models\ViewModels\NewPuzzleFormViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
