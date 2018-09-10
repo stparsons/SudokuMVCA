@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using SudokuValidation.Models.ViewModels;
-using System.Linq;
-using System.Web;
 
 namespace SudokuValidation.Models
 {

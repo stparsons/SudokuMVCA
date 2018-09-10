@@ -3,6 +3,12 @@ using System.Collections.Generic;
 
 namespace SudukoValidator
 {
+    /// <summary>
+    ///     Class used to validate a grid of data
+    ///     Validates that data passed to constructor is vavlid
+    ///     Then allows user to call helper methos to verify rows, colomns and blocks of data are 
+    ///     acurate per the rules of Sudoku
+    /// </summary>
     public class Validator
     {
         private const int _gridSize = 9;

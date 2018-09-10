@@ -6,6 +6,9 @@ using SudukoValidator;
 
 namespace SudokuValidation.Models
 {
+    /// <summary>
+    ///     Model data to support a Sudoku Grid
+    /// </summary>
     public class SudokuGrid
     {
         public string Message { get; set; }
