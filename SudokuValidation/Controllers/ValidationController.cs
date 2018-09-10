@@ -4,14 +4,32 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SudokuValidation.Models;
+using SudokuValidation.Models.ViewModels;
 using SudukoValidator;
 
 namespace SudokuValidation.Controllers
 {
     public class ValidationController : Controller
     {
-        // GET: Validation
-        public ActionResult Index()
+
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Validate(NewPuzzleFormViewModel newPuzzle)
+        {
+            SudokuGrid sudokuGrid = new SudokuGrid()
+            {
+                IndexIterator = 0,
+                ValidatorGrid = new Validator( newPuzzle.PuzzleData )
+            };
+
+            return View( sudokuGrid );
+        }
+
+        public ActionResult Index( NewPuzzleFormViewModel newPuzzle )
         {
             string clientString = @"
                 5 3 4 6 7 8 9 1 2

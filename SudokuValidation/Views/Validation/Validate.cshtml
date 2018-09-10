@@ -1,0 +1,68 @@
+﻿@model SudokuValidation.Models.SudokuGrid
+@{
+    ViewBag.Title = "Validate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sudoku Validation</h2>
+<div class="container">
+
+    <h2>Validation Grid</h2>
+    @{
+        var rowIndex = 0;
+        var colIndex = 0;
+    }
+    <table id="grid">
+        @foreach ( var row in Model.ValidatorGrid.Grid )
+        {
+            colIndex = 0;
+            if ( Model.ValidatorGrid.IsRowValid( rowIndex ) )
+            {
+                <tr>
+                    @foreach ( var col in row )
+                    {
+                        if ( Model.ValidatorGrid.IsColumnValid( colIndex ) )
+                        {
+                            <td>
+                                <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled />
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <input id="cell-@Model.IndexIterator" type="text" value="@col" style="background-color: indianred" disabled />
+                            </td>
+                        }
+                        Model.IndexIterator++;
+                        colIndex++;
+                    }
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    @foreach ( var col in row )
+                    {
+                        if ( Model.ValidatorGrid.IsColumnValid( colIndex ) )
+                        {
+                            <td>
+                                <input id="cell-@Model.IndexIterator" type="text" value="@col" style="background-color: indianred" disabled />
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <input id="cell-@Model.IndexIterator" type="text" value="@col" style="background-color: indianred" disabled />
+                            </td>
+                        }
+                        Model.IndexIterator++;
+                        colIndex++;
+                    }
+                </tr>
+            }
+            rowIndex++;
+        }
+    </table>
+
+</div>
+
