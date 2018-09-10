@@ -16,6 +16,10 @@
     white-space: normal;
 }
 
+textarea#PuzzleData {
+    height: 200px;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
