@@ -27,6 +27,19 @@ textarea {
     max-width: 280px;
 }
 
+.navbar-inverse {
+    background-color: #1d0669;
+    border-color: #080808;
+}
+
+.navbar-inverse .navbar-brand {
+        color: white;
+    }
+
+.navbar-inverse .navbar-nav > li > a {
+        color: white;
+    }
+
 html, body {
     background-color: #FAFAFA
 }
