@@ -10,5 +10,5 @@ Sudoku MVC Solution
 <li>The user will enter the data as a set of space delimited numbers and then tell the user if it is valid or not
 <li>UI should work on Mobile/Tablet and Web interfaces
 <li>Please provide a zip’d package of your .Net solution
-<li>Sample Valid and Invalid data was provided by MasTec.
+<li>Sample valid and invalid data was provided by the client.
 </ul>
