@@ -228,13 +228,15 @@ namespace SudokuValidation.Tests
         [TestMethod]
         public void TestValidateAllBlocks()
         {
-             List<List<int>> baseBlockOrigValid = new List<List<int>>() {
+
+
+            List<List<int>> baseBlockOrigValid = new List<List<int>>() {
                 new List<int>() {5,3,4, 6,7,8, 9,1,2},
                 new List<int>() {6,7,2, 1,9,5, 3,4,8},
                 new List<int>() {1,9,8, 3,4,2, 5,6,7},
 
                 new List<int>() {8,5,9, 7,6,1, 4,2,3},
-                new List<int>() {4,2,6, 8,5,3, 7,9,1},
+                new List<int>() {4,2,9, 8,5,3, 7,9,1},
                 new List<int>() {7,1,3, 9,2,4, 8,5,6},
 
                 new List<int>() {9,6,1, 5,3,7, 2,8,4},
@@ -243,42 +245,125 @@ namespace SudokuValidation.Tests
             };
 
             Validator validator = new Validator( baseBlockOrigValid );
+#region Col 1-2-3
+            Assert.IsTrue( validator.IsBlockValid( 0, 0 ), "Block TopLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 0, 1 ), "Block TopLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 0, 2 ), "Block TopLeft should be valid" );
 
-            Assert.IsTrue( validator.IsBlockValid( 0, 0, 3 ), "Block TopLeft should be valid" );
-            Assert.IsTrue( validator.IsBlockValid( 0, 3, 3 ), "Block TopMiddle should be valid" );
-            Assert.IsTrue( validator.IsBlockValid( 0, 6, 3 ), "Block Topright should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 1, 0 ), "Block TopLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 1, 1 ), "Block TopLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 1, 2 ), "Block TopLeft should be valid" );
 
-            Assert.IsTrue( validator.IsBlockValid( 3, 0, 3 ), "Block MiddleLeft should be valid" );
-            Assert.IsTrue( validator.IsBlockValid( 3, 3, 3 ), "Block MiddleMiddle should be valid" );
-            Assert.IsTrue( validator.IsBlockValid( 3, 6, 3 ), "Block MiddleRight should be valid" );
-
-            Assert.IsTrue( validator.IsBlockValid( 6, 0, 3 ), "Block BottomLeft should be valid" );
-            Assert.IsTrue( validator.IsBlockValid( 6, 3, 3 ), "Block BottomMiddle should be valid" );
-            Assert.IsTrue( validator.IsBlockValid( 6, 6, 3 ), "Block BottomRight should be valid" );
-
-
-            // Check for invalid values in Top Left Block
-            int originalValue = 0;
-            originalValue = baseBlockOrigValid [ 1 ] [ 1 ];
-            baseBlockOrigValid [ 1 ] [ 1 ] = 0;
-            validator = new Validator( baseBlockOrigValid );
-            Assert.IsFalse( validator.IsBlockValid( 0, 0, 3 ), "Block TopLeft Should not be valid. It contains a zero" );
-
-            baseBlockOrigValid [ 1 ] [ 1 ] = 10;
-            validator = new Validator( baseBlockOrigValid );
-            Assert.IsFalse( validator.IsBlockValid( 0, 0, 3 ), "Block TopLeft Should not be valid. It contains a ten" );
+            Assert.IsTrue( validator.IsBlockValid( 2, 0 ), "Block TopLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 2, 1 ), "Block TopLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 2, 2 ), "Block TopLeft should be valid" );
 
 
-            // Check for Invalid Values in bottom left block
-            baseBlockOrigValid [ 1 ] [ 1 ] = originalValue;
-            originalValue = baseBlockOrigValid [ 7 ] [ 7 ];
-            baseBlockOrigValid [ 7 ] [ 7 ] = 0;
-            validator = new Validator( baseBlockOrigValid );
-            Assert.IsFalse( validator.IsBlockValid( 6, 6, 3 ), "Block BottomRight Should not be valid. It contains a zero" );
+            Assert.IsFalse( validator.IsBlockValid( 3, 0 ), "Block MidLeft should be valid" );
+            Assert.IsFalse( validator.IsBlockValid( 3, 1 ), "Block MidLeft  should be valid" );
+            Assert.IsFalse( validator.IsBlockValid( 3, 2 ), "Block MidLeft  should be valid" );
 
-            baseBlockOrigValid [ 7 ] [ 7 ] = 10;
-            validator = new Validator( baseBlockOrigValid );
-            Assert.IsFalse( validator.IsBlockValid( 6, 6, 3 ), "Block BottomRight Should not be valid. It contains a ten" );
+            Assert.IsFalse( validator.IsBlockValid( 4, 0 ), "Block MidLeft  should be valid" );
+            Assert.IsFalse( validator.IsBlockValid( 4, 1 ), "Block MidLeft  should be valid" );
+            Assert.IsFalse( validator.IsBlockValid( 4, 2 ), "Block MidLeft  should be valid" );
+
+            Assert.IsFalse( validator.IsBlockValid( 5, 0 ), "Block MidLeft  should be valid" );
+            Assert.IsFalse( validator.IsBlockValid( 5, 1 ), "Block MidLeft  should be valid" );
+            Assert.IsFalse( validator.IsBlockValid( 5, 2 ), "Block MidLeft  should be valid" );
+
+
+            Assert.IsTrue( validator.IsBlockValid( 6, 0 ), "Block BotLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 6, 1 ), "Block BotLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 6, 2 ), "Block BotLeft should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 7, 0 ), "Block BotLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 7, 1 ), "Block BotLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 7, 2 ), "Block BotLeft should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 8, 0 ), "Block BotLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 8, 1 ), "Block BotLeft should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 8, 2 ), "Block BotLeft should be valid" );
+#endregion Col 1-2-3
+
+#region Col 4-5-6
+            Assert.IsTrue( validator.IsBlockValid( 0, 3 ), "Block TopMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 0, 4 ), "Block TopMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 0, 5 ), "Block TopMid should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 1, 3 ), "Block TopMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 1, 4 ), "Block TopMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 1, 5 ), "Block TopMid should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 2, 3 ), "Block TopMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 2, 4 ), "Block TopMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 2, 5 ), "Block TopMid should be valid" );
+
+
+            Assert.IsTrue( validator.IsBlockValid( 3, 3 ), "Block MidMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 3, 4 ), "Block MidMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 3, 5 ), "Block MidMid should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 4, 3 ), "Block MidMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 4, 4 ), "Block MidMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 4, 5 ), "Block MidMid should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 5, 3 ), "Block MidMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 5, 4 ), "Block MidMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 5, 5 ), "Block MidMid should be valid" );
+
+
+            Assert.IsTrue( validator.IsBlockValid( 6, 3 ), "Block BotMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 6, 4 ), "Block BotMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 6, 5 ), "Block BotMid should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 7, 3 ), "Block BotMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 7, 4 ), "Block BotMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 7, 5 ), "Block BotMid should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 8, 3 ), "Block BotMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 8, 4 ), "Block BotMid should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 8, 5 ), "Block BotMid should be valid" );
+#endregion Col 4-5-6
+
+#region Col 7-8-9
+            Assert.IsTrue( validator.IsBlockValid( 0, 6 ), "Block TopRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 0, 7 ), "Block TopRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 0, 8 ), "Block TopRight should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 1, 6 ), "Block TopRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 1, 7 ), "Block TopRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 1, 8 ), "Block TopRight should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 2, 6 ), "Block TopRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 2, 7 ), "Block TopRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 2, 8 ), "Block TopRight should be valid" );
+
+
+            Assert.IsTrue( validator.IsBlockValid( 3, 6 ), "Block MidRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 3, 7 ), "Block MidRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 3, 8 ), "Block MidRight should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 4, 6 ), "Block MidRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 4, 7 ), "Block MidRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 4, 8 ), "Block MidRight should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 5, 6 ), "Block MidRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 5, 7 ), "Block MidRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 5, 8 ), "Block MidRight should be valid" );
+
+
+            Assert.IsTrue( validator.IsBlockValid( 6, 6 ), "Block BotRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 6, 7 ), "Block BotRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 6, 8 ), "Block BotRight should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 7, 6 ), "Block BotRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 7, 7 ), "Block BotRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 7, 8 ), "Block BotRight should be valid" );
+
+            Assert.IsTrue( validator.IsBlockValid( 8, 6 ), "Block BotRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 8, 7 ), "Block BotRight should be valid" );
+            Assert.IsTrue( validator.IsBlockValid( 8, 8 ), "Block BotRight should be valid" );
+#endregion Col 7-8-9
 
         }
 

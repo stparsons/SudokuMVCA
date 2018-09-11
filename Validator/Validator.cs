@@ -165,35 +165,51 @@ namespace SudukoValidator
 
         /// <summary>
         ///     Check each block
+        ///     User should pass the exact row/col index they are on
+        ///     This routine will check the block.
         /// </summary>
         /// <param name="grid"></param>
-        /// <param name="baseRow"></param>
-        /// <param name="baseCol"></param>
+        /// <param name="rowIndx"></param>
+        /// <param name="colIndx"></param>
         /// <param name="smallSquareSize"></param>
         /// <returns></returns>
-        public bool IsBlockValid( int baseRow, int baseCol, int smallSquareSize )
+        public bool IsBlockValid( int rowIndx, int colIndx )
         {
-            bool [] exists = new bool [ grid.Count ];
+            // figre the grid block size
+            //  Using the index figure the top corner of each block
+            //  Plug into the formula
+            int smallSquareSize = 3;
+            int baseRow = ( rowIndx / 3 ) * 3;
+            int baseCol = ( colIndx / 3 ) * 3; 
 
-            for ( int row = baseRow; row < ( baseRow + smallSquareSize ); ++row )
+            try
             {
-                for ( int col = baseCol; col < ( baseCol + smallSquareSize ); ++col )
-                {
-                    int index = grid [ row ] [ col ] - 1;
+                bool [] exists = new bool [ grid.Count ];
 
-                    if ( !isBetween1and9( grid [ row ] [ col ] ) )
+                for ( int row = baseRow; row < ( baseRow + smallSquareSize ); ++row )
+                {
+                    for ( int col = baseCol; col < ( baseCol + smallSquareSize ); ++col )
                     {
-                        return false;
-                    }
-                    if ( !exists [ index ] )
-                    {
-                        exists [ index ] = true;
-                    }
-                    else
-                    {
-                        return false;
+                        int index = grid [ row ] [ col ] - 1;
+
+                        if ( !isBetween1and9( grid [ row ] [ col ] ) )
+                        {
+                            return false;
+                        }
+                        if ( !exists [ index ] )
+                        {
+                            exists [ index ] = true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+                throw new ApplicationException( "Failed on - Row: " + baseRow + " Col: " + baseCol );
             }
 
             return true;

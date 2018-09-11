@@ -26,50 +26,28 @@
         @foreach ( var row in Model.ValidatorGrid.Grid )
         {
             colIndex = 0;
-            if ( Model.ValidatorGrid.IsRowValid( rowIndex ) )
-            {
-                <tr>
-                    @foreach ( var col in row )
+            <tr>
+                @foreach ( var col in row )
+                {
+                    if ( Model.ValidatorGrid.IsRowValid( rowIndex )
+                        && Model.ValidatorGrid.IsColumnValid( colIndex )
+                        && Model.ValidatorGrid.IsBlockValid( rowIndex,  colIndex ) )
                     {
-                        if ( Model.ValidatorGrid.IsColumnValid( colIndex ) )
-                        {
-                            <td>
-                                <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled />
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                <input id="cell-@Model.IndexIterator" type="text" value="@col" style="background-color: indianred" disabled />
-                            </td>
-                        }
-                        Model.IndexIterator++;
-                        colIndex++;
+                        <td>
+                            <input id="cell-@Model.IndexIterator" type="text" value="@col" disabled />
+                        </td>
                     }
-                </tr>
-            }
-            else
-            {
-                <tr>
-                    @foreach ( var col in row )
+                    else
                     {
-                        if ( Model.ValidatorGrid.IsColumnValid( colIndex ) )
-                        {
-                            <td>
-                                <input id="cell-@Model.IndexIterator" type="text" value="@col" style="background-color: indianred" disabled />
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                <input id="cell-@Model.IndexIterator" type="text" value="@col" style="background-color: indianred" disabled />
-                            </td>
-                        }
-                        Model.IndexIterator++;
-                        colIndex++;
+                        <td>
+                            <input id="cell-@Model.IndexIterator" type="text" value="@col" style="background-color: indianred" disabled />
+                        </td>
                     }
-                </tr>
-            }
+                    Model.IndexIterator++;
+                    colIndex++;
+                    
+                }
+            </tr>
             rowIndex++;
         }
     </table>
