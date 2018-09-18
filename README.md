@@ -9,6 +9,5 @@ Sudoku MVC Solution
 <li>No need to produce a Sudoku solver, just a validator
 <li>The user will enter the data as a set of space delimited numbers and then tell the user if it is valid or not
 <li>UI should work on Mobile/Tablet and Web interfaces
-<li>Please provide a zip’d package of your .Net solution
-<li>Sample valid and invalid data was provided by the client.
+<li>Add sample data to an About page so users can copy and paste into the tool
 </ul>
